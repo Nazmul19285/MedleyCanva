@@ -20,6 +20,9 @@ import LocalCarWashOutlinedIcon from '@mui/icons-material/LocalCarWashOutlined';
 import OutdoorGrillOutlinedIcon from '@mui/icons-material/OutdoorGrillOutlined';
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
+import Banner from './components/banner/Banner';
+import Profile from './components/profile/Profile';
+import Home from './components/home/Home';
 
 const drawerWidth = 240;
 
@@ -118,16 +121,20 @@ function App() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            This is notice board
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <div className='w-full'>
+            <h1 className='text-center'>Medley Canva</h1>
+          </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
+        <Profile></Profile>
         <List>
           {['Travel', 'Coocking', 'Blog', 'Shorts'].map((text) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -145,24 +152,25 @@ function App() {
                     justifyContent: 'center',
                   }}
                 >
-                  {text === 'Travel' ? <LocalCarWashOutlinedIcon></LocalCarWashOutlinedIcon>: null
+                  {text === 'Travel' ? <LocalCarWashOutlinedIcon></LocalCarWashOutlinedIcon> : null
                   }
-                  {text === 'Coocking' ? <OutdoorGrillOutlinedIcon></OutdoorGrillOutlinedIcon>: null
+                  {text === 'Coocking' ? <OutdoorGrillOutlinedIcon></OutdoorGrillOutlinedIcon> : null
                   }
-                  {text === 'Blog' ? <VideoCameraFrontOutlinedIcon></VideoCameraFrontOutlinedIcon>: null
+                  {text === 'Blog' ? <VideoCameraFrontOutlinedIcon></VideoCameraFrontOutlinedIcon> : null
                   }
-                  {text === 'Shorts' ? <SubscriptionsOutlinedIcon></SubscriptionsOutlinedIcon>: null
+                  {text === 'Shorts' ? <SubscriptionsOutlinedIcon></SubscriptionsOutlinedIcon> : null
                   }
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
-        </List>        
+        </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1}}>
         <DrawerHeader />
-        <div>This is body</div>
+        <Banner></Banner>
+        <Home></Home>
       </Box>
     </Box>
   );
